@@ -19,8 +19,9 @@ class ConnectMsS():
     def sql_query(self, query):
         return self.filter_query(query)
 
-    def return_all_product_details(self):
-        query_rows = self.filter_query()
+
+    # def return_all_product_details(self):
+    #     query_rows = self.filter_query()
 
     def sql_query_fetchone(self, query):
         return self.filter_query(query).fetchone()
@@ -29,10 +30,12 @@ class ConnectMsS():
         title = self.sql_query_fetchone(f"SELECT * FROM recipe_list WHERE [Recipe Name] = '{input_title}'")
         return title
 
+    # Add a recipe to the existing database
     def add_recipe_to_db(self, recipe_name, ingredients, post_code):
             self.filter_query(f"INSERT INTO recipe_list VALUES ('{recipe_name}', '{ingredients}', '{post_code}')")
             self.conn_rep_db.commit()
 
+    # View all of the recipe details
     def read_all_recipes(self):
         query_rows = self.filter_query("SELECT * FROM recipe_list")
         while True:
@@ -40,6 +43,11 @@ class ConnectMsS():
             if record is None:
                 break
             return record
+
+    def delete_recipe_from_db(self, recipe_to_remove):
+        self.filter_query(f"DELETE FROM recipe_list WHERE [Recipe Name] = '{recipe_to_remove}'")
+        self.conn_rep_db.commit()
+
 
 
     # all() # Have this on the db_class
