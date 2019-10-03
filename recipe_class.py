@@ -11,7 +11,7 @@ class Recipe():
     def append_a_recipe_to_file(self):
         try:
             with open('recipe.txt', 'a') as opened_file:
-                opened_file.write(self.recipe_name + self.ingredients + self.post_code)
+                opened_file.write(self.recipe_name + self.ingredients + self.post_code + '\n' )
 
         except FileNotFoundError:
             print("File not found")

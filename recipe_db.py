@@ -35,20 +35,19 @@ class ConnectMsS():
             self.filter_query(f"INSERT INTO recipe_list VALUES ('{recipe_name}', '{ingredients}', '{post_code}')")
             self.conn_rep_db.commit()
 
-    # View all of the recipe details
-    def read_all_recipes(self):
-        query_rows = self.filter_query("SELECT * FROM recipe_list")
-        while True:
-            record = query_rows.fetchone()
-            if record is None:
-                break
-            return record
-
+    # Delete a recipe from the database
     def delete_recipe_from_db(self, recipe_to_remove):
         self.filter_query(f"DELETE FROM recipe_list WHERE [Recipe Name] = '{recipe_to_remove}'")
         self.conn_rep_db.commit()
 
-
+        # View all of the recipe details
+        def read_all_recipes(self):
+            query_rows = self.filter_query("SELECT * FROM recipe_list")
+            while True:
+                record = query_rows.fetchone()
+                if record is None:
+                    break
+                return record
 
     # all() # Have this on the db_class
         # gets al the other instances form db
