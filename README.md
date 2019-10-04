@@ -13,7 +13,7 @@ Part one:
     as a user i can destroy a recipe (Done)
         - from the DB
     as a user i should be able to export one recipe to .txt (Done)
-    as a user i should be able to get more info on the location where the recipe got created. 
+    as a user i should be able to get more info on the location where the recipe got created. (Done)
     
     EXTRA TIME - go get some information about ingredients
     
